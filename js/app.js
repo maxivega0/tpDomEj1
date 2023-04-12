@@ -2,7 +2,7 @@ let botonJugar = document.getElementById("btnJugar");
 botonJugar.addEventListener("click", inciarJuego);
 let formulario = document.getElementById('formulario');
 formulario.addEventListener("submit", numeroMagico); //agregador de eventos
-let numeroAleatorio = 0;
+let numeroAleatorio = "";
 let seccionPadre = document.querySelector("#contenedorPadre");
 let contador = 0;
 
@@ -14,6 +14,8 @@ function inciarJuego() {
     contador--;
     }
     numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+    console.log(numeroAleatorio);
+    botonJugar.innerHTML = "Volver a jugar"
 }
 
 function numeroMagico(e) {
