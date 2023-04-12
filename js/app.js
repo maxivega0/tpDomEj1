@@ -1,19 +1,26 @@
 let botonJugar = document.getElementById("btnJugar");
 botonJugar.addEventListener("click", inciarJuego);
 let formulario = document.getElementById('formulario');
-formulario.addEventListener("submit", obtenerDato); //agregador de eventos
-const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+formulario.addEventListener("submit", numeroMagico); //agregador de eventos
+let numeroAleatorio = 0;
 let seccionPadre = document.querySelector("#contenedorPadre");
+let contador = 0;
 
 function inciarJuego() {
     console.log(seccionPadre.children);
+    console.log(contador);
+    while (contador > 0) {
+    seccionPadre.removeChild(seccionPadre.children[2]);
+    contador--;
+    }
+    numeroAleatorio = Math.floor(Math.random() * 100) + 1;
 }
 
-function obtenerDato(e) {
+function numeroMagico(e) {
     e.preventDefault();
     let valor = document.querySelector('input').value; // almacena el objeto input
     let alerta = document.createElement("div");
-    // let resultado = "";
+    contador++;
     console.log(numeroAleatorio);
     if (valor>numeroAleatorio) {
         alerta.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> El numero ingresado ${valor}, es mayor al numero magico `
@@ -26,7 +33,5 @@ function obtenerDato(e) {
         alerta.className += "alert alert-success my-3";
     }
     seccionPadre.appendChild(alerta);
-    // let div = document.createElement("p");
-    // div.innerHTML = resultado
     formulario.reset();
   }
